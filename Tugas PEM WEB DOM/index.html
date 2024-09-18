@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Panitia Kegiatan XYZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input[type="text"], textarea {
+            width: 300px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        textarea {
+            height: 80px;
+        }
+        .button {
+            margin-left: 105px;
+        }
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulir Pendaftaran Panitia Kegiatan XYZ</h2>
+    <form id="formPendaftaran">
+        <div>
+            <label for="nama">Nama :</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+        <div>
+            <label for="nim">NIM :</label>
+            <input type="text" id="nim" name="nim" required>
+        </div>
+        <div>
+            <label for="kelas">Kelas :</label>
+            <input type="text" id="kelas" name="kelas" required>
+        </div>
+        <div>
+            <label for="alamat">Alamat :</label>
+            <textarea id="alamat" name="alamat" required></textarea>
+        </div>
+        <div class="button">
+            <button type="button" id="kirimBtn">Kirim</button>
+        </div>
+    </form>
+
+    <h3>Tampilkan datanya disini.....</h3>
+    <table>
+        <tr>
+            <td>Nama :</td>
+            <td id="tampilNama"></td>
+        </tr>
+        <tr>
+            <td>Kelas :</td>
+            <td id="tampilKelas"></td>
+        </tr>
+        <tr>
+            <td>NIM :</td>
+            <td id="tampilNIM"></td>
+        </tr>
+        <tr>
+            <td>Alamat :</td>
+            <td id="tampilAlamat"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    // Event 'click' pada tombol Kirim
+    document.getElementById('kirimBtn').addEventListener('click', function() {
+        tampilkanData();
+    });
+
+    // Event 'focus' pada input Nama
+    document.getElementById('nama').addEventListener('focus', function() {
+        console.log('Input Nama sedang diisi');
+    });
+
+    // Event 'blur' pada input NIM
+    document.getElementById('nim').addEventListener('blur', function() {
+        console.log('Input NIM telah selesai diisi');
+    });
+
+    // Event 'input' pada textarea Alamat
+    document.getElementById('alamat').addEventListener('input', function() {
+        console.log('Sedang mengetik di Alamat: ', this.value);
+    });
+
+    // Event 'submit' pada form
+    document.getElementById('formPendaftaran').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah pengiriman form default
+        tampilkanData(); // Panggil fungsi untuk menampilkan data
+    });
+
+    // Fungsi untuk menampilkan data dari form ke tabel
+    function tampilkanData() {
+        var nama = document.getElementById('nama').value;
+        var nim = document.getElementById('nim').value;
+        var kelas = document.getElementById('kelas').value;
+        var alamat = document.getElementById('alamat').value;
+
+        document.getElementById('tampilNama').innerText = nama;
+        document.getElementById('tampilNIM').innerText = nim;
+        document.getElementById('tampilKelas').innerText = kelas;
+        document.getElementById('tampilAlamat').innerText = alamat;
+    }
+</script>
+
+</body>
+</html>
